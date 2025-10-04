@@ -1,127 +1,54 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+const slides = document.querySelector(".slides");
+const images = document.querySelectorAll(".slides img");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+const dots = document.querySelectorAll(".dot");
+
+let index = 0;
+const total = images.length;
+
+// Atualiza slide
+function updateSlide() {
+  slides.style.transform = `translateX(${-index * 100}%)`;
+  dots.forEach(dot => dot.classList.remove("active"));
+  dots[index].classList.add("active");
 }
 
-body {
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  background-color: #111;
-  color: #f1f1f1;
-  line-height: 1.6;
-  align-items: center;
-  text-align: center;
-}
+// Botões
+nextBtn.addEventListener("click", () => {
+  index = (index + 1) % total;
+  updateSlide();
+});
 
-.container {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-}
+prevBtn.addEventListener("click", () => {
+  index = (index - 1 + total) % total;
+  updateSlide();
+});
 
-/* Cabeçalho */
-header h1 {
-  color: #e63946;
-  font-size: 2rem;
-  font-weight: bold;
-}
+// Dots
+dots.forEach((dot, i) => {
+  dot.addEventListener("click", () => {
+    index = i;
+    updateSlide();
+  });
+});
 
-header p {
-  font-size: 0.9rem;
-  color: #ff4d6d;
-  margin-bottom: 20px;
-}
+// Auto play
+setInterval(() => {
+  index = (index +1) % total;
+  updateSlide();
+}, 8000); // troca a cada 8s
 
-/* Carrossel */
-.carousel {
-  position: relative;
-  max-width: 400px;
-  margin: auto;
-  overflow: hidden;
-  border-radius: 10px;
-}
 
-.slides {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
+  var buttonYes = document.querySelector(".botão Button");
+  var buttonNo = document.querySelector(".botão BUTTon");
+  console.log(buttonYes);
+  buttonYes.addEventListener("click", function() {
+    alert("Eu também te amo muito! 💖");
+  });
+  function desvia (){
+    var btn = document.querySelector(".botão BUTTon");
+    console.log(btn);
+    console.log("opa, Desviei...");
+  }
 
-.slides img {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-}
-
-/* Botões */
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 20px;
-  color: #fff;
-  border-radius: 50%;
-}
-
-.prev { left: 10px; }
-.next { right: 10px; }
-
-/* Dots */
-.dots {
-  text-align: center;
-  margin: 10px 0;
-}
-
-.dot {
-  height: 10px;
-  width: 10px;
-  margin: 0 3px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.dot.active {
-  background-color: #fff;
-}
-
-/* Texto */
-.texto {
-  text-align: justify;
-  align-items: justify;
-  margin: 50px auto;
-  text-align: justify;
-  color: #ddd;
-  font-size: 0.95rem;
-}
-
-/* Rodapé */
-footer {
-  margin-top: 30px;
-  font-size: 0.8rem;
-  color: #4e4e4e;
-}
-
-.footer {
-  margin-top: 30px;
-  font-size: 0.8rem;
-  color: #eee9e9;}
-
-button {
-  background-color: #e63946;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 12px;
-}
