@@ -43,12 +43,14 @@ setInterval(() => {
   var buttonYes = document.querySelector(".botão Button");
   var buttonNo = document.querySelector(".botão BUTTon");
   console.log(buttonYes);
-  buttonYes.addEventListener("click", function() {
-    alert("Eu também te amo muito! 💖");
-  });
-  function desvia (){
-    var btn = document.querySelector(".botão BUTTon");
-    console.log(btn);
-    console.log("opa, Desviei...");
-  }
+  
+    
 
+  buttonNo.addEventListener("mouseover"), function() {(alert("Ops! Você não pode clicar aqui!"))}
+  function desvia(element) {
+    var x = Math.random() * (window.innerWidth - element.clientWidth);
+    var y = Math.random() * (window.innerHeight - element.clientHeight);
+    element.style.position = "absolute";
+    element.style.left = x + "px";
+    element.style.top = y + "px";
+  }
